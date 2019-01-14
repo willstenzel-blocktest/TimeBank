@@ -7,13 +7,12 @@ contract TestTimeBank is TimeBank {
   function deposit() public payable {}
 
   function test_depositFunds() public {
-    TimeBank bank = TimeBank(address(this));
-    bank.depositFunds.value(1000)(1647224721);
+    this.depositFunds.value(1000)(1647224721);
 
     uint fundsDeposited;
     uint withdrawTime;
     uint blockTime;
-    (fundsDeposited, withdrawTime, blockTime) = bank.getInfo();
+    (fundsDeposited, withdrawTime, blockTime) = this.getInfo();
 
     assert(fundsDeposited == 1000);
     assert(withdrawTime == 1647224721);
